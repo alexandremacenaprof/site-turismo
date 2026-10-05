@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuaruNativa EcoTurismo - Preservação, Aventura e Impacto Social</title>
+    <style>
+        :root {
+            --primary-color: #2D5A27;
+            --primary-light: #4A7C59;
+            --secondary-color: #D4A373;
+            --accent-color: #E07A5F;
+            --bg-light: #FAEDCD;
+            --bg-dark: #1E331B;
+            --text-dark: #2B2D42;
+            --text-light: #F8F9FA;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #F9F9F6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(45, 90, 39, 0.75), rgba(30, 51, 27, 0.85)), 
+                        url('http://googleusercontent.com/image_collection/image_retrieval/16457570198598667303_0') center/cover no-repeat;
+            color: var(--text-light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #c8654b;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Cards Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #EAEAEA;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Table Styling */
+        .swot-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .swot-table th, .swot-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #EAEAEA;
+        }
+
+        .swot-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Highlight List */
+        .highlight-list {
+            list-style: none;
+        }
+
+        .highlight-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .highlight-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo-container">
+                <img src="img/LogoGuaruNativa.png" alt="GuaruNativa EcoTurismo Logo" class="logo-img">
+                <span class="logo-text">GuaruNativa</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#sumario">Sumário Executivo</a></li>
+                <li><a href="#analise">Análise de Mercado</a></li>
+                <li><a href="#produtos">Produtos e Serviços</a></li>
+                <li><a href="#operacional">Plano Operacional</a></li>
+                <li><a href="#marketing">Marketing</a></li>
+                <li><a href="#financeiro">Plano Financeiro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Turismo Sustentável em Guarulhos/SP</span>
+            <h1>A Mata Atlântica a menos de 40 km da Capital</h1>
+            <p>Experiências imersivas de ecoturismo, turismo pedagógico e de aventura aliando preservação ambiental e impacto socioambiental positivo nas comunidades locais.</p>
+            <a href="#produtos" class="btn btn-primary">Conheça Nossos Roteiros</a>
+        </div>
+    </section>
+
+    <!-- 1. Sumário Executivo -->
+    <section id="sumario">
+        <h2 class="section-title">1. Sumário Executivo</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Proposta de Valor</h3>
+                <p>Proporcionar experiências imersivas em ecoturismo, conexão com a natureza e turismo pedagógico a poucos minutos da Capital e do Aeroporto Internacional de Guarulhos.</p>
+            </div>
+            <div class="card">
+                <h3>Público-Alvo</h3>
+                <ul class="highlight-list">
+                    <li>Moradores da Grande SP e ABCD (Day-use)</li>
+                    <li>Passageiros em conexão no Aeroporto GRU (Stopover)</li>
+                    <li>Escolas e empresas com agenda ESG</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Modelo de Negócios</h3>
+                <p>Venda direta de pacotes guiados B2C, parcerias B2B para eventos corporativos e expedições pedagógicas com foco em sustentabilidade local.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Análise de Mercado -->
+    <section id="analise">
+        <h2 class="section-title">2. Análise de Mercado (SWOT)</h2>
+        <table class="swot-table">
+            <thead>
+                <tr>
+                    <th>Forças (Strengths)</th>
+                    <th>Oportunidades (Opportunities)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>• Proximidade com São Paulo e aeroporto internacional<br>• Riqueza de biodiversidade no Núcleo Cabuçu</td>
+                    <td>• Crescimento da busca por turismo de bem-estar<br>• Programas de stopover com companhias aéreas<br>• Demandas corporativas por práticas ESG</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>Fraquezas (Weaknesses)</th>
+                    <th>Ameaças (Threats)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>• Estigma de cidade estritamente industrial<br>• Falta de infraestrutura turística pesada no entorno</td>
+                    <td>• Eventos climáticos extremos (chuvas intensas)<br>• Pressão de especulação imobiliária nas divisas</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 3. Produtos e Serviços -->
+    <section id="produtos">
+        <h2 class="section-title">3. Produtos e Serviços</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>01. EcoStopover</h3>
+                <p>Experiência express de meio período para passageiros com conexões longas no Aeroporto GRU. Inclui transporte dedicado, caminhada leve no Núcleo Cabuçu e degustação regional.</p>
+            </div>
+            <div class="card">
+                <h3>02. Imersão Cantareira & Cabuçu</h3>
+                <p>Caminhada guiada de interpretação ambiental na Mata Atlântica, visita à histórica Barragem do Cabuçu (1913) e banho de cachoeira com guias credenciados pelo CADASTUR.</p>
+            </div>
+            <div class="card">
+                <h3>03. Cicloturismo & Rota dos Orgânicos</h3>
+                <p>Passeio de mountain bike / e-bike pelas estradas rurais do Norte de Guarulhos, integrando visita a produtores orgânicos locais para café da manhã colonial.</p>
+            </div>
+            <div class="card">
+                <h3>04. Trilha Histórica de Bonsucesso</h3>
+                <p>Roteiro cultural abordando a história do povoamento de Guarulhos, tradições da cultura afro-brasileira e manifestações populares como a Festa de Bonsucesso.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Plano Operacional -->
+    <section id="operacional">
+        <h2 class="section-title">4. Plano Operacional & Sustentabilidade (ESG)</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Pegada de Carbono Zero</h3>
+                <p>Neutralização integral do carbono emitido pelo transporte através do plantio de espécies nativas em áreas de restauração ambiental de Guarulhos.</p>
+            </div>
+            <div class="card">
+                <h3>Política Leave No Trace</h3>
+                <p>Gestão rigorosa de resíduos em todas as expedições, garantindo que nenhum impacto negativo seja deixado nas trilhas e ecossistemas.</p>
+            </div>
+            <div class="card">
+                <h3>Impacto Comunitário Direto</h3>
+                <p>Contratação prioritária de guias, monitores e fornecedores das comunidades locais de Guarulhos, fortalecendo a economia circular do município.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Marketing e Vendas -->
+    <section id="marketing">
+        <h2 class="section-title">5. Estratégia de Marketing e Vendas</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Estratégia B2C</h3>
+                <ul class="highlight-list">
+                    <li>Inbound Marketing e Conteúdo SEO focado em ecoturismo SP</li>
+                    <li>Campanha social media "Você sabia que isso fica em Guarulhos?"</li>
+                    <li>Parcerias com hotéis e redes de recepção no entorno do GRU Airport</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Estratégia B2B</h3>
+                <ul class="highlight-list">
+                    <li>Prospecção ativa para Escolas de SP e Região (Estudo do Meio)</li>
+                    <li>Programas de Vivência ESG e Team Building para empresas</li>
+                    <li>Integração a pacotes de Stopover de agências parceiras</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Plano Financeiro -->
+    <section id="financeiro">
+        <h2 class="section-title">6. Projeção Financeira</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Investimento Inicial</h3>
+                <p><strong>R$ 80.000 a R$ 120.000</strong></p>
+                <p>Destinado a adequação legal, certificações ABNT ISO 21101, equipamentos de segurança, plataforma digital e capital de giro.</p>
+            </div>
+            <div class="card">
+                <h3>Precificação</h3>
+                <p><strong>B2C:</strong> R$ 120,00 a R$ 220,00 / pessoa</p>
+                <p><strong>B2B / Grupos:</strong> R$ 2.500,00 a R$ 6.000,00 / grupo</p>
+            </div>
+            <div class="card">
+                <h3>Retorno (Break-even)</h3>
+                <p><strong>8º a 12º Mês</strong></p>
+                <p>Projeção de atingimento do ponto de equilíbrio no primeiro ano de operação com margem bruta entre 40% e 50%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 GuaruNativa EcoTurismo. Todos os direitos reservados.</p>
+        <p>Guarulhos / SP - Brasil</p>
+    </footer>
+
+</body>
+</html>
