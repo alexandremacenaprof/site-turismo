@@ -42,14 +42,14 @@
             background-color: #F9F9F6;
         }
 
-        /* Header & Navigation com altura definida */
+        /* Header & Navigation */
         header {
             background-color: #FFFFFF;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
-            height: 80px;
+            min-height: 80px;
             display: flex;
             align-items: center;
         }
@@ -61,7 +61,8 @@
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0.8rem 2rem;
+            position: relative;
         }
 
         .logo-container {
@@ -72,17 +73,39 @@
         }
 
         .logo-img {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             object-fit: contain;
             border-radius: 50%;
         }
 
         .logo-text {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary-color);
             letter-spacing: -0.5px;
+        }
+
+        /* Botão Hambúrguer para Dispositivos Móveis */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1002;
+        }
+
+        .mobile-menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
@@ -110,7 +133,7 @@
             color: var(--primary-color);
         }
 
-        /* Dropdown Menu */
+        /* Dropdown Menu Desktop */
         .dropdown {
             position: relative;
         }
@@ -147,7 +170,64 @@
             display: block;
         }
 
-        /* Hero Section com Imagem Pública Válida */
+        /* Responsive Breakpoint (Telas Menores de 992px) */
+        @media (max-width: 992px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #FFFFFF;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 1rem 2rem 2rem 2rem;
+                align-items: flex-start;
+                gap: 0.5rem;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 0;
+                border-bottom: 1px solid #EAEAEA;
+                width: 100%;
+            }
+
+            /* Dropdowns no Mobile */
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                background-color: #F8F9FA;
+                padding-left: 1rem;
+                display: block; /* No mobile fica visível como sublista */
+            }
+
+            .dropdown-menu li a {
+                padding: 0.5rem 1rem;
+                border-bottom: none;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(30, 51, 27, 0.9)), 
                         url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
@@ -230,16 +310,16 @@
             border-radius: 2px;
         }
 
-        /* Cards Grid */
+        /* Responsive Grids */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
@@ -302,14 +382,19 @@
             font-size: 1.1rem;
         }
 
-        /* Table Styling */
+        /* Responsive Table Container */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
         .swot-table {
             width: 100%;
             border-collapse: collapse;
             background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            min-width: 500px;
         }
 
         .swot-table th, .swot-table td {
@@ -353,7 +438,7 @@
 
         .map-responsive {
             overflow: hidden;
-            padding-bottom: 45%;
+            padding-bottom: 50%;
             position: relative;
             height: 0;
             border-radius: 8px;
@@ -380,7 +465,7 @@
 
         .contact-email {
             display: inline-block;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary-color);
             background: var(--bg-light);
@@ -389,6 +474,7 @@
             text-decoration: none;
             margin-top: 1.5rem;
             transition: all 0.3s ease;
+            word-break: break-all;
         }
 
         .contact-email:hover {
@@ -409,6 +495,25 @@
             opacity: 0.8;
             font-size: 0.9rem;
         }
+
+        /* Ajustes adicionais de fontes para celulares */
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -420,17 +525,26 @@
                 <img src="img/LogoGuaruNativa.png" alt="GuaruNativa EcoTurismo Logo" class="logo-img">
                 <span class="logo-text">GuaruNativa</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#produtos">Produtos e Serviços</a></li>
-                <li><a href="#esg">ESG</a></li>
-                <li><a href="#onde-estamos">Onde estamos</a></li>
+
+            <!-- Botão Hambúrguer para Celular/Tablet -->
+            <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menu de Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#produtos" class="menu-link">Produtos e Serviços</a></li>
+                <li><a href="#esg" class="menu-link">ESG</a></li>
+                <li><a href="#onde-estamos" class="menu-link">Onde estamos</a></li>
                 
                 <!-- Dropdown Informações -->
                 <li class="dropdown">
                     <a href="#informacoes">Informações ▾</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#quem-somos">Quem Somos</a></li>
-                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#quem-somos" class="menu-link">Quem Somos</a></li>
+                        <li><a href="#contato" class="menu-link">Contato</a></li>
                     </ul>
                 </li>
 
@@ -438,11 +552,11 @@
                 <li class="dropdown">
                     <a href="#plano-negocios">Plano de Negócios ▾</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#sumario">Sumário Executivo</a></li>
-                        <li><a href="#analise">Análise de Mercado</a></li>
-                        <li><a href="#operacional">Plano Operacional</a></li>
-                        <li><a href="#marketing">Marketing</a></li>
-                        <li><a href="#financeiro">Plano Financeiro</a></li>
+                        <li><a href="#sumario" class="menu-link">Sumário Executivo</a></li>
+                        <li><a href="#analise" class="menu-link">Análise de Mercado</a></li>
+                        <li><a href="#operacional" class="menu-link">Plano Operacional</a></li>
+                        <li><a href="#marketing" class="menu-link">Marketing</a></li>
+                        <li><a href="#financeiro" class="menu-link">Plano Financeiro</a></li>
                     </ul>
                 </li>
             </ul>
@@ -544,7 +658,7 @@
         <div class="location-container">
             <h3>Sede Operacional / Ponto de Encontro</h3>
             <p><strong>E.E. Conselheiro Crispiniano</strong></p>
-            <p>Rua Arminda de Lima, 57 - Centro, Guarulhos - SP, CEP 07095-010</p>
+            <p>Rua Arminda de Lima, 57 - Vila Progresso, Guarulhos - SP, 07095-010</p>
             <p style="margin-top: 0.5rem; opacity: 0.8; font-size: 0.95rem;">Localização estratégica na área central de Guarulhos para facilidade de acesso a grupos, escolas e saídas para o Núcleo Cabuçu / Parque Estadual da Cantareira.</p>
             
             <div class="map-responsive">
@@ -624,32 +738,34 @@
         <!-- Análise de Mercado -->
         <div id="analise" style="margin-bottom: 2rem;">
             <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Análise de Mercado (Matriz SWOT)</h3>
-            <table class="swot-table">
-                <thead>
-                    <tr>
-                        <th>Forças (Strengths)</th>
-                        <th>Oportunidades (Opportunities)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>• Proximidade estratégica com São Paulo e aeroporto internacional<br>• Riqueza de biodiversidade preservada no Núcleo Cabuçu</td>
-                        <td>• Crescimento da busca por turismo de bem-estar<br>• Programas de stopover com companhias aéreas<br>• Altas demandas corporativas por práticas ESG</td>
-                    </tr>
-                </tbody>
-                <thead>
-                    <tr>
-                        <th>Fraquezas (Weaknesses)</th>
-                        <th>Ameaças (Threats)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>• Estigma de cidade estritamente industrial<br>• Falta de infraestrutura turística pesada no entorno dos parques</td>
-                        <td>• Eventos climáticos extremos (chuvas intensas)<br>• Pressão de especulação imobiliária nas divisas florestais</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="swot-table">
+                    <thead>
+                        <tr>
+                            <th>Forças (Strengths)</th>
+                            <th>Oportunidades (Opportunities)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>• Proximidade estratégica com São Paulo e aeroporto internacional<br>• Riqueza de biodiversidade preservada no Núcleo Cabuçu</td>
+                            <td>• Crescimento da busca por turismo de bem-estar<br>• Programas de stopover com companhias aéreas<br>• Altas demandas corporativas por práticas ESG</td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th>Fraquezas (Weaknesses)</th>
+                            <th>Ameaças (Threats)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>• Estigma de cidade estritamente industrial<br>• Falta de infraestrutura turística pesada no entorno dos parques</td>
+                            <td>• Eventos climáticos extremos (chuvas intensas)<br>• Pressão de especulação imobiliária nas divisas florestais</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Plano Operacional -->
@@ -720,6 +836,27 @@
         <p>E.E. Conselheiro Crispiniano — Guarulhos / SP - Brasil</p>
         <p style="margin-top: 0.5rem;"><a href="mailto:alexandremacena@prof.educacao.sp.gov.br" style="color: var(--secondary-color); text-decoration: none;">alexandremacena@prof.educacao.sp.gov.br</a></p>
     </footer>
+
+    <!-- JavaScript para Interatividade do Menu Hambúrguer -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        // Alternar abertura e fechamento do menu ao clicar no botão hambúrguer
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Fechar o menu automaticamente ao clicar em qualquer item
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
